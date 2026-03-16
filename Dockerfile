@@ -1,11 +1,11 @@
-FROM node:18
+FROM python:3.10-slim
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 3002
 
-CMD ["node", "app.js"]
+CMD ["node", "app.py"]
