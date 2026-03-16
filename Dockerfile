@@ -1,11 +1,13 @@
-FROM python:3.10-slim
+FROM python:3.9
 
 WORKDIR /app
 
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
 COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 5000
 
-EXPOSE 3002
-
-CMD ["node", "app.py"]
+CMD ["python", "app.py"]
